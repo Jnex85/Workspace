@@ -1,7 +1,9 @@
+/// <reference path="_all.ts" />
 var angularJsApp;
 (function (angularJsApp) {
     var app = angular.module("angularJsAppModule", ["ngRoute", "ngMaterial"]);
     /*   app.value("componentBorders", true);
+  
       app.run(function (componentBorders: any) {
           if (componentBorders) {
               if (app._invokeQueue) {
@@ -26,4 +28,3 @@ var angularJsApp;
           }
       }); */
 })(angularJsApp || (angularJsApp = {}));
-//# sourceMappingURL=boot.js.map
