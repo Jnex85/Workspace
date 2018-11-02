@@ -9,7 +9,6 @@ namespace angularJsApp {
         templateUrl: "../../dist/view/base.html",
         controller: BaseComponentController,
         bindings: {
-            model: "<?"
         }
     };
 
