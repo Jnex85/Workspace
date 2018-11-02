@@ -1,0 +1,1 @@
+/// <reference path="../../app/typings/tsd.d.ts" />

@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html ng-app="gaugeAngularWithTS">
+<head>
+    <title>AngularJS With TypeScript</title>
+    <link href="content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="content/css/bootstrap.custom.min.css" rel="stylesheet" />
+    <link href="content/css/dx.common.css" rel="stylesheet" />
+    <link href="content/css/dx.spa.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="page-header"></div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div ng-view="">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/angular.js"></script>
+    <script src="scripts/angular-route.js"></script>
+    <script type="text/javascript" src="scripts/dx.all.js"></script>
+    <script type="text/javascript" src="scripts/globalize.js"></script>
+    <script src="app/app.routes.js"></script>
+    <script src="app/app.module.js"></script>
+    <script src="app/services/gaugeService.js"></script>
+    <script src="app/controllers/gaugeController.js"></script>
+</body>
+</html>

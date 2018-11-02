@@ -1,0 +1,8 @@
+1.(NPM INSTALL: npm install angular / angular-material / angular-aria / angular-messages / angular-animate / angular-route / lodash / jquery )
+2 install types --> npm install @types/angular @types/angular-material @types/jquery  @types/angular-route @types/lodash  
+2. npm init
+4. installare typescript globalmente nelle cartella di livello superiore all'applicazione
+5. Aggiungere tsconfig(configurandolo)
+6. Andare in src e lanciare tsc.cmd -w per attivare il watch
+7. installare live-server con npm
+8. lanciare live server in app folder

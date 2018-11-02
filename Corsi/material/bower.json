@@ -1,0 +1,19 @@
+{
+  "name": "material",
+  "description": "",
+  "main": "index.js",
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "^1.1.10",
+    "angular-material-icons": "^0.7.1"
+  }
+}

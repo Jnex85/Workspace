@@ -1,0 +1,49 @@
+﻿<h2 align="center">DevExpress Gauge AngularJS - BASE</h2>
+<br />
+<br />
+<div class="dx-viewport gauge-container">
+    <div id="gauge-demo">
+        <div id="textContent" ng-show="$ctrl.textContentShow">
+            <p align="center" style="color:red">30%</p>
+            <hr>
+            <p align="center">Gross Sales</p>
+        </div>
+        <div class="widget-container">
+            <div id="gauge" dx-circular-gauge="gaugeOptions"></div>
+        </div>
+        <div class="options">
+            <div class="caption">Options</div>
+            <div class="option">
+                <span>SubValue 1</span>
+                <div dx-number-box="SubValue1"></div>
+            </div>
+            <div class="option">
+                <span>SubValue 2</span>
+                <div dx-number-box="SubValue2"></div>
+            </div>
+            <!-- <div class="option">
+                <span>Range 1</span>
+                <div dx-number-box="Range1"></div>
+            </div>
+            <div class="option">
+                <span>Range 2</span>
+                <div dx-number-box="Range2"></div>
+            </div> -->
+            <div class="option">
+                <div dx-button="editButton"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--<div class="jumbotron">
+    <ul class="list-group">
+        <li ng-show="playList.favorites" class="list-group-item" ng-repeat="t in playList.favorites">
+            {{t.title}}
+        </li>
+    </ul>
+    <button class="btn btn-block" ng-click="playList.getFavourites()">Get Favorites Tracks</button>
+</div>-->
