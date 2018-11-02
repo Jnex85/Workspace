@@ -17,4 +17,4 @@ var ContactManagerApp;
     }());
     ContactManagerApp.AddUserDialogController = AddUserDialogController;
 })(ContactManagerApp || (ContactManagerApp = {}));
-//# sourceMappingURL=AddUserDialogController.js.map
+//# sourceMappingURL=addUserDialogController.js.map
