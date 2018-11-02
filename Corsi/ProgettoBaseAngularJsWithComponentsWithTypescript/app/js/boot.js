@@ -1,7 +1,7 @@
 /// <reference path="_all.ts" />
 var angularJsApp;
 (function (angularJsApp) {
-    var app = angular.module("angularJsAppModule", ["ngMaterial", "ui-router"]);
+    var app = angular.module("angularJsAppModule", ["ngRoute", "ngMaterial"]);
     app.value("componentBorders", true);
     app.run(function (componentBorders) {
         if (componentBorders) {
