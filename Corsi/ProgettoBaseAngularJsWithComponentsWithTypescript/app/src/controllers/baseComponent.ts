@@ -10,6 +10,6 @@ namespace angularJsApp {
         .component("baseComponent", {
             bindings: { },
             controller: BaseComponentController,
-            templateUrl: "../../view/base.html"
+            templateUrl: "../app/view/base.html"
         });
 }

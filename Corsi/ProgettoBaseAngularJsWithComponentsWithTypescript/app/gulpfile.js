@@ -44,6 +44,12 @@ gulp.task('AngularMaterialIconsJs', function () {
      .pipe(gulp.dest('../app/js/libraries'));
 });
 
+gulp.task('AngularRouteJs', function () {
+    gulp.src('../node_modules/angular-route/angular-route.js')
+     .pipe(gulp.dest('../app/js/libraries'));
+});
+
+
 gulp.task('end', function() {
     console.log('Bye Giuseppe - tasks done!');
 });
@@ -57,6 +63,7 @@ gulp.task('build', [`hello`,
     `AngularMaterialJs`,
     `AngularMessagesJs`,
     `AngularMaterialIconsJs`,
+    `AngularRouteJs`,
     `end`],
     function (){
     console.log('Building files');

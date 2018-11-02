@@ -1,8 +1,11 @@
 var angularJsApp;
 (function (angularJsApp) {
     "use strict";
-    class BaseComponentController {
-    }
+    var BaseComponentController = /** @class */ (function () {
+        function BaseComponentController() {
+        }
+        return BaseComponentController;
+    }());
     angular
         .module("angularJsAppModule")
         .component("baseComponent", {
@@ -11,4 +14,3 @@ var angularJsApp;
         templateUrl: "../app/view/base.html"
     });
 })(angularJsApp || (angularJsApp = {}));
-//# sourceMappingURL=baseComponent.js.map

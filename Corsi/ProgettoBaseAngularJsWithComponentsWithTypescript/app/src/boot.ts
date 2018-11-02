@@ -1,5 +1,5 @@
 /// <reference path="_all.ts" />
 
 namespace angularJsApp {
-    angular.module("angularJsAppModule", []);
+    angular.module("angularJsAppModule", ["ngRoute", "ngMaterial"]);
 }

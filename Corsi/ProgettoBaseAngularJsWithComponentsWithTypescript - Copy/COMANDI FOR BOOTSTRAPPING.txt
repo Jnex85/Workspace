@@ -1,8 +1,0 @@
-1.bower install angular-material
-2.bower init
-3.bower update sulla creazione di .bowerrc
-4. installare typescript globalmente nelle cartella di livello superiore all'applicazione
-5.Aggiungere typings e tsconfig(configurandolo)
-6. Andare in src e lanciare tsc.cmd -w per attivare il watch
-7. installare live-server con npm
-8. lanciare live server in app folder

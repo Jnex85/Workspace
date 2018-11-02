@@ -4,6 +4,6 @@
 4. installare typescript globalmente nelle cartella di livello superiore all'applicazione
 5. installare gulp e configurare i task
 5. Aggiungere tsconfig(configurandolo)
-6. Andare in src e lanciare tsc.cmd -w per attivare il watch
+6. Andare in app e lanciare tsc.cmd -w per attivare il watch
 7. installare live-server con npm
 8. lanciare live server in app folder
