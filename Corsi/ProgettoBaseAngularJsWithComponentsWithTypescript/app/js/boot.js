@@ -1,6 +1,5 @@
-/// <reference path="_all.ts" />
 var angularJsApp;
 (function (angularJsApp) {
-    angular.module("angularJsAppModule", ["ng-route", "ngMaterial"]);
+    angular.module("angularJsAppModule", []);
 })(angularJsApp || (angularJsApp = {}));
 //# sourceMappingURL=boot.js.map

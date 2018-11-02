@@ -1,17 +1,15 @@
 namespace angularJsApp {
     "use strict";
 
-    class BaseComponentController implements ng.IComponentController {
+    class BaseComponentController {
 
     }
 
-    const componentOptions: ng.IComponentOptions = {
-        templateUrl: "../../dist/view/base.html",
-        controller: BaseComponentController,
-        bindings: {
-        }
-    };
-
-    angular.module("angularJsAppModule")
-    .component("jneBaseComponent", componentOptions);
+    angular
+        .module("angularJsAppModule")
+        .component("baseComponent", {
+            bindings: { },
+            controller: BaseComponentController,
+            templateUrl: "../../view/base.html"
+        });
 }

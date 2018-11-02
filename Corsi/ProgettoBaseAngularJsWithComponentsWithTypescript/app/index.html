@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="angularJsApp">
+<html lang="en" ng-app="angularJsAppModule">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,10 +21,8 @@
 </head>
 <body ng-cloak>
 
-    {{2+2}}
-
     <h1>Home progetto base</h1>
-    <jne-base-component></jne-base-component>
+    <base-component></base-component>
 
     <script src="../app/js/libraries/angular.js"></script>
     <script src="../app/js/libraries/angular-animate.js"></script>
@@ -33,7 +31,7 @@
     <script src="../app/js/libraries/angular-messages.js"></script>
     <script src="../app/js/libraries/angular-material-icons.js"></script>
 
-    <script src="./dist/boot.js"></script>
+    <script src="../app/js/boot.js"></script>
 
 </body>
 </html>
