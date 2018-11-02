@@ -6,9 +6,7 @@ var angularJsApp;
     const componentOptions = {
         templateUrl: "../../dist/view/base.html",
         controller: BaseComponentController,
-        bindings: {
-            model: "<?"
-        }
+        bindings: {}
     };
     angular.module("angularJsAppModule")
         .component("jneBaseComponent", componentOptions);
