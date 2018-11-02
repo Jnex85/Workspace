@@ -49,6 +49,11 @@ gulp.task('AngularRouteJs', function () {
      .pipe(gulp.dest('../app/js/libraries'));
 });
 
+//non funziona
+gulp.task('AngularUiRouterJs', function () {
+    gulp.src('../node_modules/angular-ui-router/lib/index.js')
+     .pipe(gulp.dest('../app/js/libraries'));
+});
 
 gulp.task('end', function() {
     console.log('Bye Giuseppe - tasks done!');
@@ -64,6 +69,7 @@ gulp.task('build', [`hello`,
     `AngularMessagesJs`,
     `AngularMaterialIconsJs`,
     `AngularRouteJs`,
+    `AngularUiRouterJs`,
     `end`],
     function (){
     console.log('Building files');
