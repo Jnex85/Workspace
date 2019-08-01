@@ -59,6 +59,167 @@ inc = liftf(add)(1);
 inc = curry(add,1);
 
 
+function twice(binary) {
+    return function(first) {
+        return binary(first, first);
+    };
+}
+
+function reverse(binary) {
+    return function(first, second){
+        return binary(second, first);
+    };
+}
+
+function composeu(f, g) {
+    return function(a) {
+        return g(f(a));
+    };
+}
+
+function composeb(f, g) {
+    return function (a, b, c){
+        return g(f(a,b), c);
+    };
+}
+
+function limit(binary, count) {
+    return function (a, b) {
+        if(count >= 1) {
+            count -= 1;
+            return binary(a, b);
+        }
+        return undefined;
+    };
+}
+
+function from(start) {
+    return function(){
+        let next = start;
+        start += 1;
+        return next;
+    };
+}
+
+function to(generator, end) {
+    return function() {
+        var value = generator();
+        if(value < end) {
+            return value;
+        }
+        return undefined;
+    };
+}
+
+function fromTo(start, end) {
+    return to(from(start), end);
+}
+
+function element(array, generator) {
+    if(generator === undefined) {
+        gent = fromTo(0, array.length);
+    }
+    return function() {
+        var index = generator();
+        if(index !== undefined) {
+            return array[index];
+        } 
+    };
+}
+
+function collect(generator, array) {
+    return function() {
+        var next = generator();
+        if(next !== undefined) {
+            array.push(next);
+        }
+        return next;
+    };
+}
+
+function filter(generator, predicate) {
+    return function() {
+        var value;
+        do {
+            value = generator();
+        } while(value !== undefined && !predicate(value)) {
+
+        };
+        return value;
+    };
+}
+
+function filter(generator, predicate) {
+    return function recur() {
+        var value = generator();
+        if(value === undefined || predicate(value)) {
+            return value;
+        }
+        return recur();
+    };
+}
+
+function concat(gen1, gen2) {
+    var gen = gen1;
+    return function() {
+        var value = gen();
+        if(value !== undefined) {
+            return value;
+        }
+        gen = gen2;
+        return gen;
+    };
+}
+
+function concat(...gens) {
+    var next = element(gens);
+    gen = next();
+    return function recur() {
+        var value = gen();
+        if(value === undefined) {
+            gen = next();
+            if(gen !== undefined) {
+                return recur();
+            }
+        }
+        return value;
+    };
+}
+
+function gensymf(prefix) {
+    var number = 0;
+    return function() {
+        number += 1;
+        return prefix + number;
+    };
+}
+
+function counter(value) {
+    return {
+        up: function() {
+            value += 1;
+            return value;
+        },
+        down: function(){
+            value -= 1;
+            return value;
+        }
+    }
+}
+
+function revocable(binary) {
+    return {
+        invoke: function(fist, second) {
+            if(binary!==undefined) {
+                return binary(first, second);
+            }
+        },
+        revoke: function(){
+            binary = undefined;
+        }
+    }
+}
+
 log(identity(3));
 
 
