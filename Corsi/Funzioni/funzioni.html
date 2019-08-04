@@ -220,6 +220,103 @@ function revocable(binary) {
     }
 }
 
+function m(value, source) {
+    return {
+        value: value,
+        source: (typeof source === 'string') ? source : String(value)
+
+    }
+}
+
+function addm(first, second) {
+    return m(first.value + second.value, "(" + first.source + "+" + second.source + ")" )
+}
+
+function exp(value) {
+    return (Array.isArray(value)) ? value[0](value[1], value[2]) : value;
+}
+
+function addg(first) {
+
+    function more(next) {
+        if(next === undefined) {
+            return first;
+        }
+        first +=next;
+        return more;
+    }
+
+    if(first !== undefined) {
+        return more;
+    }
+}
+
+function arrayg(first) {
+    var array = [];
+
+    function more(next) {
+        if(next === undefined) {
+            return array;
+        }
+        array.push(next);
+        return more;
+    }
+
+    return more(first);
+}
+
+function continuize(unary) {
+    return function(callback, arg){
+        return callback(unary(arg));
+    };
+}
+
+function continuize(any) {
+    return function(callback, ...x){
+        return callback(any(...x));
+    };
+}
+
+function vector() {
+    var array = [];
+    return  {
+        get: function get(i) {
+            return array[+i];
+        },
+        store: function(i, v) {
+            array[+i] = v;
+        },
+        append: function(v) {
+            array[array.length] = v;
+        }
+    };
+}
+
+function pubsub() {
+    var subscribers = [];
+    return {
+        subscribe: function(subscriber) {
+            subscribers.push(subscriber);
+        },
+        publish: function(publication) {
+            subscribers.forEach(function (s) {
+                try {
+                    s(publication);
+                }
+                catch(ignore) {
+
+                }
+            });
+            // var i, length = subscribers.length;
+            // for (i = 0; i < length; i += 1) {
+            //     subscribers[i](publication);
+                
+            // }
+        }
+
+    }
+}
+
 log(identity(3));
 
 
