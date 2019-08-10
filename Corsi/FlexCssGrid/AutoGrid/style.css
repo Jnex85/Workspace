@@ -9,8 +9,12 @@ body {
 	border: solid 4px #000;
     /* display: grid; */
 	display: inline-grid;
-	grid-template-columns: 6em 1em 6em 1em 6em 1em 6em;
-	grid-template-rows: 6em 1em 6em;
+	/* grid-template-columns: 10em 6em 6em 6em;
+	grid-template-rows: 6em 6em;
+	grid-auto-flow: column; */
+	grid: 10em 6em 6em 6em / 6em 6em;
+	/* grid-template-columns: 6m repeat(3, 6em); */
+
 }
 
 .grid-item {
@@ -27,59 +31,69 @@ body {
 
 .grid-item-01 {
 	background-color: #A62E5C;
-	grid-column-start: 1;
+	/* grid-column-start: 1;
 	grid-column-end: 2;
 	grid-row-start: 1;
-	grid-row-end: 2;
+	grid-row-end: 2; */
 }
 
 .grid-item-02 {
 	background-color: #9BC850;
-	grid-column-start: 3;
-	grid-column-end: 4;
+	/* grid-column-start: 2;
+	grid-column-end: 3;
 	grid-row-start: 1;
-	grid-row-end: 2;
+	grid-row-end: 2; */
+	/* grid-column-start: 2;
+	grid-column-end: 4;
+	grid-row-start: 2;
+	grid-row-end: 2; */
+	grid-area: 2 / 4 / 2 / 2;
+
 }
 
 .grid-item-03 {
 	background-color: #675BA7;
-	grid-column-start: 5;
-	grid-column-end: 6;
+	/* grid-column-start: 3;
+	grid-column-end: 4;
 	grid-row-start: 1;
-	grid-row-end: 2;
+	grid-row-end: 2; */
 }
 
 .grid-item-04,
 .grid-item-08 {
 	background-color: #2A9FBC;
-	grid-column-start: 7;
-	grid-column-end: 8;
+	/* grid-column-start: 4;
+	grid-column-end: 5;
 	grid-row-start: 1;
-	grid-row-end: 2;
+	grid-row-end: 2; */
 }
 
 .grid-item-05 {
 	background-color: #F15B2A;
-	grid-column-start: 1;
+	/* grid-column-start: 1;
 	grid-column-end: 2;
-	grid-row-start: 3;
-	grid-row-end: 4;
+	grid-row-start: 2;
+	grid-row-end: 3; */
 }
 
 .grid-item-06 {
 	background-color: #675BA7;
-	grid-column-start: 3;
-	grid-column-end: 4;
-	grid-row-start: 3;
-	grid-row-end: 4;
+	/* grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 2;
+	grid-row-end: 3; */
 }
 
 .grid-item-07 {
 	background-color: #A62E5C;
-	grid-column-start: 5;
-	grid-column-end: 6;
-	grid-row-start: 3;
-	grid-row-end: 4;
+	/* grid-column-start: 3;
+	grid-column-end: 4;
+	grid-row-start: 2;
+	grid-row-end: 3; */
+}
+
+.grid-item-09 {
+	background-color: rgb(134, 166, 46);
 }
 
 .grid-item strong {
