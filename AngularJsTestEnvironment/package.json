@@ -1,0 +1,24 @@
+{
+  "name": "playground",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/angular": "1.6.54",
+    "@types/angular-material": "1.1.67",
+    "@types/jquery": "3.3.29",
+    "@types/kendo-ui": "^2017.3.3",
+    "typescript": "^3.4.3"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.138",
+    "angular": "1.7.4",
+    "angular-animate": "1.7.4",
+    "angular-aria": "1.7.4",
+    "angular-material": "1.1.10",
+    "angular-messages": "1.7.4",
+    "angular-sanitize": "1.7.4",
+    "jquery": "2.1.4",
+    "lodash": "^4.17.15"
+  }
+}

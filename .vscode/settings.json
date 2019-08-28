@@ -1,4 +1,4 @@
 {
     "vscode.tsc.compiler.alertTSConfigChanges": "never",
-    "git.autofetch": true
+    "vscode.tsc.compiler.alertOnError": "never"
 }
