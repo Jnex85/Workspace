@@ -1,5 +1,6 @@
 /// <reference path="../resources/kendo/kendo.extensions.d.ts"/>
 /// <reference path="../node_modules/@types/kendo-ui/index.d.ts"/>
+/// <reference path="../node_modules/@types/angular/index.d.ts"/>
 var Config = /** @class */ (function () {
     // tslint:disable-next-line:no-empty
     function Config() {
