@@ -27,10 +27,10 @@ var Controller = /** @class */ (function () {
                 }
             });
             _this.comboBoxOptions = {
-                dataValueField: "value",
-                dataTextField: "text",
+                dataValueField: "text",
+                dataTextField: "value",
                 template: function (item) {
-                    return ["<div>" + item.value + "</div>"].join("");
+                    return ["<div>" + item.value + "</div>"];
                 },
                 dataSource: _this.comboBoxDataSource
             };

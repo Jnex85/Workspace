@@ -41,10 +41,10 @@ class Controller implements ng.IComponentController {
         });
 
         this.comboBoxOptions = {
-            dataValueField: "value",
-            dataTextField: "text",
+            dataValueField: "text",
+            dataTextField: "value",
             template: (item: {text: string, value: string}) => {
-                return [`<div>${item.value}</div>`].join("");
+                return [`<div>${item.value}</div>`];
             },
             dataSource: this.comboBoxDataSource
         };
