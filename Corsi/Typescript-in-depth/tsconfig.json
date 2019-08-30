@@ -11,6 +11,5 @@
     ],
     "args": ["--target", "ES6",
         "--outDir", "js",
-        "--sourceMap",
-        "--watch"]
+        "--sourceMap"]
   }
