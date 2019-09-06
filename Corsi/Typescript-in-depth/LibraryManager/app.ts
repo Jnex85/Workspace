@@ -1,18 +1,20 @@
-enum Category {Biografia, Poesia, Commedia, Storia, Bambini}
+import { Category } from "./enums";
+import { IBook, IStringGenerator, IDamageLogger, IAuthor, ILibrarian } from "./interfaces";
+import {UniversityLibrarian} from "./classes";
 
-function GetAllBooks(): Array<any> {
+function GetAllBooks(): Array<IBook> {
 
-    let books: Array<any> = [
-        { title: "ulisse", author: "pippo", available: true, category: Category.Biografia },
-        { title: "Armi", author: "pluto", available: false, category: Category.Storia  },
-        { title: "Farfalle", author: "paperino", available: true, category: Category.Bambini  },
-        { title: "Delfino", author: "willy", available: true, category: Category.Commedia  },
+    let books: Array<IBook> = [
+        { id: 1, title: "ulisse", author: "pippo", available: true, category: Category.Biografia },
+        { id: 2, title: "Armi", author: "pluto", available: false, category: Category.Storia  },
+        { id: 3, title: "Farfalle", author: "paperino", available: true, category: Category.Bambini  },
+        { id: 4,title: "Delfino", author: "willy", available: true, category: Category.Commedia  },
     ];
 
     return books;
 }
 
-function LogFirstAvailable(books:  Array<any>): void {
+function LogFirstAvailable(books:  Array<IBook>): void {
     let numberOfBooks: number = books.length;
     let firstAvailable: string = "";
 
@@ -27,10 +29,10 @@ function LogFirstAvailable(books:  Array<any>): void {
     console.log("First Available: ", firstAvailable);
 }
 
-function GetBookTitlesByCategory(categoryFilter: Category): Array<string> {
+function GetBookTitlesByCategory(categoryFilter: Category = Category.Poesia ): Array<string> { // default parameter
     console.log("Getting books in category: ", categoryFilter);
 
-    const allBooks: Array<any> = GetAllBooks();
+    const allBooks: Array<IBook> = GetAllBooks();
     const filteredTitles: string[] = [];
     for(let currentBook of allBooks) {
         if(currentBook.category === categoryFilter) {
@@ -46,17 +48,137 @@ function LogBookTitles(titles: string[]): void {
     }
 }
 
-function getBookId(id: number): any {
-    const allBooks: Array<any> = GetAllBooks();
+function GetBookId(id: number): IBook {
+    const allBooks: Array<IBook> = GetAllBooks();
     return allBooks.filter(book => book.id === id)[0];
 }
 
 
-const allBooks: Array<any> = GetAllBooks();
+const allBooks: Array<IBook> = GetAllBooks();
 LogFirstAvailable(allBooks);
 
 
 const bambiniBook: string[] = GetBookTitlesByCategory(Category.Bambini);
 LogBookTitles(bambiniBook);
 
-bambiniBook.forEach((val, idx, arr)=> console.log(++idx + " - " + val));
+bambiniBook.forEach((val, idx, arr)=> console.log(++idx + " - " + val)); // arrow function
+
+
+
+// ********************************************************************* */
+
+function CreateCustomerID(name: string, id:number): string {
+    return name + id;
+}
+
+let myID: string = CreateCustomerID("Giuseppe", 10);
+console.log(myID);
+
+let x: number;
+x = 5;
+let idGenerator: IStringGenerator; // function type
+idGenerator = CreateCustomerID;
+
+myID = idGenerator("Giuseppe", 15);
+console.log(myID);
+
+
+// ********************************************************************* */
+
+function CreateCustomer(name: string, age?: number, city?: string): void { // optional parameters
+    console.log("Creating customer "+ name);
+    if(age) {
+        console.log("Age: " + age);
+    }
+
+    if(city) {
+        console.log("City: " + city);
+    }
+}
+
+CreateCustomer("Michelle");
+CreateCustomer("Leight", 6);
+CreateCustomer("Marie", 12, "Atlanta");
+
+GetBookTitlesByCategory(); // default parameter
+
+
+// ********************************************************************* */
+
+function CheckoutBooks(customer: string, ...BookIDs: number[]): string[] { // rest parameter
+    console.log("Checking out books for " + customer);
+    let bookCheckedOut: string[] = [];
+    for(let id of BookIDs) {
+        let book: IBook = GetBookId(id);
+        if(book && book.available) {
+            bookCheckedOut.push(book.title);
+        }
+    }
+
+    return bookCheckedOut;
+}
+
+let myBooks: string[] = CheckoutBooks("ulisse", 1);
+myBooks.forEach(title => console.log(title));
+
+// ********************************************************************* */
+interface IDuck {
+    walk: () => void;
+    swim: () => void;
+    quack: () => void;
+}
+
+
+let probablyADuck: any = {
+    walk: () => console.log("walking like a duck"),
+    swim: () => console.log("swimming like a duck"),
+    quack: () => console.log("quacking like a duck")
+};
+
+// tslint:disable-next-line:no-empty
+function FlyOverTheWater(bird: IDuck): void { }
+
+FlyOverTheWater(probablyADuck); // works - duck typing
+
+
+
+// ********************************************************************* */
+function PrintBook(book: IBook): void {
+    console.log(book.title +  " by "+ book.author);
+}
+
+let myBook: any = {
+    id: 5,
+    title: "Giustizia",
+    author: "Jane Austen",
+    available: true,
+    category: Category.Commedia,
+    year: "1813",
+    copies: 3
+};
+
+PrintBook(myBook); // duck typing
+
+let myBookTyped: IBook = {
+    id: 5,
+    title: "Giustizia",
+    author: "Jane Austen",
+    available: true,
+    category: Category.Commedia,
+    pages: 350,
+    markDamaged: (reason: string) => console.log("Damaged: " + reason);
+};
+
+PrintBook(myBookTyped);
+myBookTyped.markDamaged("torn pages");
+
+let logDamage: IDamageLogger; // function types
+logDamage = (damage: string) => console.log("damage reported: " +damage);
+logDamage("coffee stains");
+
+
+// ********************************************************************* */
+
+let favouriteLibrarian: ILibrarian = new UniversityLibrarian();
+favouriteLibrarian.name = "Sharon";
+favouriteLibrarian.assistCustomer("Lynda");
