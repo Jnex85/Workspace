@@ -1,4 +1,4 @@
-import {IBook, IDamageLogger, IAuthor, ILibrarian} from "./interfaces";
+import {ILibrarian} from "./interfaces";
 
 
 class UniversityLibrarian implements ILibrarian {
@@ -11,4 +11,46 @@ class UniversityLibrarian implements ILibrarian {
     }
 }
 
-export {UniversityLibrarian};
+abstract class ReferenceItem{
+
+    private _publisher: string;
+    static department: string = "Research";
+
+    constructor(public title: string, protected year: number) {
+        console.log("Creating a new ReferenceItem");
+    }
+
+    printItem(): void {
+        console.log(`${this.title} was published in ${this.year}.`); // template string
+        console.log(`Department: ${ReferenceItem.department}`);
+    }
+
+    get publisher(): string{
+        return this._publisher.toUpperCase();
+    }
+
+    set publisher(newPublisher:string) {
+        this._publisher = newPublisher;
+    }
+
+    abstract printCitation(): void;
+}
+
+
+class Encyclopedia extends ReferenceItem {
+
+    constructor(newTitle: string, newYear: number, public edition: number) {
+        super(newTitle, newYear);
+    }
+
+    printItem(): void {
+        // super.printItem(); is optional
+        console.log(`Edition: ${this.edition} (${this.year})`);
+    }
+    printCitation(): void {
+        console.log(`${this.title} - ${this.year}`);
+    }
+}
+
+export {UniversityLibrarian, ReferenceItem, Encyclopedia};
+

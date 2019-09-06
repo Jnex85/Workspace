@@ -1,6 +1,6 @@
 import { Category } from "./enums";
-import { IBook, IStringGenerator, IDamageLogger, IAuthor, ILibrarian } from "./interfaces";
-import {UniversityLibrarian} from "./classes";
+import { IBook, IStringGenerator, IDamageLogger, ILibrarian } from "./interfaces";
+import {UniversityLibrarian, ReferenceItem, Encyclopedia} from "./classes";
 
 function GetAllBooks(): Array<IBook> {
 
@@ -182,3 +182,31 @@ logDamage("coffee stains");
 let favouriteLibrarian: ILibrarian = new UniversityLibrarian();
 favouriteLibrarian.name = "Sharon";
 favouriteLibrarian.assistCustomer("Lynda");
+
+
+// ********************************************************************* */
+
+// let ref: ReferenceItem = new ReferenceItem("Fact and Figures", 2016); // class
+// ref.printItem();
+// ref.publisher = "Random Data Publishing";
+// console.log(ref.publisher);
+
+let refBook: ReferenceItem = new Encyclopedia("WorldPedia", 1900, 10); // abstract
+refBook.printItem();
+refBook.printCitation();
+
+let NewsPaper: any = class extends ReferenceItem { // class expression
+    printCitation(): void {
+        console.log(`Newspaper: ${this.title}`);
+    }
+};
+
+let myPaper: any = new NewsPaper("The Gazette", 2016);
+myPaper.printCitation();
+
+// class Novel extends class { title: string } {
+//     mainCharacter: string;
+// }
+
+// let favouriteNovel = new Novel();
+// favouriteNovel.

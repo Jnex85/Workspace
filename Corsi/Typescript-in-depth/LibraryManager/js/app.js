@@ -128,4 +128,24 @@ logDamage("coffee stains");
 let favouriteLibrarian = new classes_1.UniversityLibrarian();
 favouriteLibrarian.name = "Sharon";
 favouriteLibrarian.assistCustomer("Lynda");
+// ********************************************************************* */
+// let ref: ReferenceItem = new ReferenceItem("Fact and Figures", 2016); // class
+// ref.printItem();
+// ref.publisher = "Random Data Publishing";
+// console.log(ref.publisher);
+let refBook = new classes_1.Encyclopedia("WorldPedia", 1900, 10); // abstract
+refBook.printItem();
+refBook.printCitation();
+let NewsPaper = class extends classes_1.ReferenceItem {
+    printCitation() {
+        console.log(`Newspaper: ${this.title}`);
+    }
+};
+let myPaper = new NewsPaper("The Gazette", 2016);
+myPaper.printCitation();
+// class Novel extends class { title: string } {
+//     mainCharacter: string;
+// }
+// let favouriteNovel = new Novel();
+// favouriteNovel.
 //# sourceMappingURL=app.js.map
