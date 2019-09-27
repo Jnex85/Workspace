@@ -5,10 +5,34 @@ const classes_1 = require("./classes");
 const encyclopedia_1 = require("./encyclopedia"); // default export class
 function GetAllBooks() {
     let books = [
-        { id: 1, title: "ulisse", author: "pippo", available: true, category: enums_1.Category.Biografia },
-        { id: 2, title: "Armi", author: "pluto", available: false, category: enums_1.Category.Storia },
-        { id: 3, title: "Farfalle", author: "paperino", available: true, category: enums_1.Category.Bambini },
-        { id: 4, title: "Delfino", author: "willy", available: true, category: enums_1.Category.Commedia },
+        {
+            id: 1,
+            title: "ulisse",
+            author: "pippo",
+            available: true,
+            category: enums_1.Category.Biografia
+        },
+        {
+            id: 2,
+            title: "Armi",
+            author: "pluto",
+            available: false,
+            category: enums_1.Category.Storia
+        },
+        {
+            id: 3,
+            title: "Farfalle",
+            author: "paperino",
+            available: true,
+            category: enums_1.Category.Bambini
+        },
+        {
+            id: 4,
+            title: "Delfino",
+            author: "willy",
+            available: true,
+            category: enums_1.Category.Commedia
+        }
     ];
     return books;
 }
@@ -25,6 +49,7 @@ function LogFirstAvailable(books) {
     console.log("First Available: ", firstAvailable);
 }
 function GetBookTitlesByCategory(categoryFilter = enums_1.Category.Poesia) {
+    // default parameter
     console.log("Getting books in category: ", categoryFilter);
     const allBooks = GetAllBooks();
     const filteredTitles = [];
@@ -63,6 +88,7 @@ myID = idGenerator("Giuseppe", 15);
 console.log(myID);
 // ********************************************************************* */
 function CreateCustomer(name, age, city) {
+    // optional parameters
     console.log("Creating customer " + name);
     if (age) {
         console.log("Age: " + age);
@@ -77,6 +103,7 @@ CreateCustomer("Marie", 12, "Atlanta");
 GetBookTitlesByCategory(); // default parameter
 // ********************************************************************* */
 function CheckoutBooks(customer, ...BookIDs) {
+    // rest parameter
     console.log("Checking out books for " + customer);
     let bookCheckedOut = [];
     for (let id of BookIDs) {
@@ -138,6 +165,7 @@ let refBook = new encyclopedia_1.default("WorldPedia", 1900, 10); // abstract - 
 refBook.printItem();
 refBook.printCitation();
 let NewsPaper = class extends classes_1.ReferenceItem {
+    // class expression
     printCitation() {
         console.log(`Newspaper: ${this.title}`);
     }
@@ -159,4 +187,59 @@ const utilityFunction_1 = require("./utilityFunction");
 let fee = utilityFunction_1.calculateLateFee(10);
 let max = utilityFunction_1.maxBooksAllowed(12);
 console.log(`Fee: ${fee}`);
+// *****************************GENERICS**************************************** */
+let inventory = [
+    {
+        id: 10,
+        title: "C programming language",
+        author: "a.c",
+        available: true,
+        category: enums_1.Category.Programmi
+    },
+    {
+        id: 11,
+        title: "Clean Code",
+        author: "b.e",
+        available: true,
+        category: enums_1.Category.Programmi
+    },
+    {
+        id: 12,
+        title: "Solid principles",
+        author: "f.d",
+        available: true,
+        category: enums_1.Category.Programmi
+    },
+    {
+        id: 13,
+        title: "Scripts",
+        author: "n.t",
+        available: true,
+        category: enums_1.Category.Programmi
+    }
+];
+// tslint:disable-next-line:comment-format
+let purgedBooks = utilityFunction_1.Purge(inventory); // Purge(inventory);
+purgedBooks.forEach(book => console.log(`purged book: ${book.title}`));
+let purgedNums = utilityFunction_1.Purge([1, 2, 3, 4]);
+console.log(purgedNums);
+const shelf_1 = require("./shelf");
+let bookShelf = new shelf_1.default();
+inventory.forEach(book => bookShelf.add(book));
+let firstBook = bookShelf.getFirst();
+let magazines = [
+    { title: "Programming language of the month", publisher: "Code Mags" },
+    { title: "Whats hot this month", publisher: "College press" },
+    { title: "Five Points", publisher: "GSU" }
+];
+let magazineShelf = new shelf_1.default();
+magazines.forEach(magazine => magazineShelf.add(magazine));
+let firstMagazine = magazineShelf.getFirst();
+// let numberShelf:Shelf<number> = new Shelf<number>();
+// [5,10,15].forEach(num => numberShelf.add(num));
+console.log(`First Book: ${firstBook.title}`);
+console.log(`First Magazine: ${firstMagazine.title}`);
+magazineShelf.printTitles();
+let softwareBook = bookShelf.find("C programming language");
+console.log(`${softwareBook.title} (${softwareBook.author})`);
 //# sourceMappingURL=app.js.map
