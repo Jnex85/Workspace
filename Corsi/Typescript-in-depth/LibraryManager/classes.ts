@@ -11,7 +11,7 @@ class UniversityLibrarian implements ILibrarian {
     }
 }
 
-abstract class ReferenceItem{
+abstract class ReferenceItem {
 
     private _publisher: string;
     static department: string = "Research";
@@ -25,7 +25,7 @@ abstract class ReferenceItem{
         console.log(`Department: ${ReferenceItem.department}`);
     }
 
-    get publisher(): string{
+    get publisher(): string {
         return this._publisher.toUpperCase();
     }
 
@@ -37,20 +37,5 @@ abstract class ReferenceItem{
 }
 
 
-class Encyclopedia extends ReferenceItem {
-
-    constructor(newTitle: string, newYear: number, public edition: number) {
-        super(newTitle, newYear);
-    }
-
-    printItem(): void {
-        // super.printItem(); is optional
-        console.log(`Edition: ${this.edition} (${this.year})`);
-    }
-    printCitation(): void {
-        console.log(`${this.title} - ${this.year}`);
-    }
-}
-
-export {UniversityLibrarian, ReferenceItem, Encyclopedia};
+export {UniversityLibrarian, ReferenceItem};
 

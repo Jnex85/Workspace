@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const enums_1 = require("./enums");
 const classes_1 = require("./classes");
+const encyclopedia_1 = require("./encyclopedia"); // default export class
 function GetAllBooks() {
     let books = [
         { id: 1, title: "ulisse", author: "pippo", available: true, category: enums_1.Category.Biografia },
@@ -133,7 +134,7 @@ favouriteLibrarian.assistCustomer("Lynda");
 // ref.printItem();
 // ref.publisher = "Random Data Publishing";
 // console.log(ref.publisher);
-let refBook = new classes_1.Encyclopedia("WorldPedia", 1900, 10); // abstract
+let refBook = new encyclopedia_1.default("WorldPedia", 1900, 10); // abstract - default class import
 refBook.printItem();
 refBook.printCitation();
 let NewsPaper = class extends classes_1.ReferenceItem {
@@ -148,4 +149,14 @@ myPaper.printCitation();
 // }
 // let favouriteNovel = new Novel();
 // favouriteNovel.
+// *****************************NAMESPACE**************************************** */
+// /// <reference path="utilityFunction.ts" />
+// import util = Utility.Fees;
+//  let fee: number = util.calculateLateFee(10);
+//  console.log(`Fee: ${fee}`);
+// *****************************MODULE**************************************** */
+const utilityFunction_1 = require("./utilityFunction");
+let fee = utilityFunction_1.calculateLateFee(10);
+let max = utilityFunction_1.maxBooksAllowed(12);
+console.log(`Fee: ${fee}`);
 //# sourceMappingURL=app.js.map

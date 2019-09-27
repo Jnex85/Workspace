@@ -25,18 +25,4 @@ class ReferenceItem {
 }
 ReferenceItem.department = "Research";
 exports.ReferenceItem = ReferenceItem;
-class Encyclopedia extends ReferenceItem {
-    constructor(newTitle, newYear, edition) {
-        super(newTitle, newYear);
-        this.edition = edition;
-    }
-    printItem() {
-        // super.printItem(); is optional
-        console.log(`Edition: ${this.edition} (${this.year})`);
-    }
-    printCitation() {
-        console.log(`${this.title} - ${this.year}`);
-    }
-}
-exports.Encyclopedia = Encyclopedia;
 //# sourceMappingURL=classes.js.map

@@ -1,10 +1,12 @@
 import { Category } from "./enums";
-import { IBook, IStringGenerator, IDamageLogger, ILibrarian } from "./interfaces";
-import {UniversityLibrarian, ReferenceItem, Encyclopedia} from "./classes";
+// import { IBook, IStringGenerator, Logger, ILibrarian } from "./interfaces";
+import * as Interfaces from "./interfaces";
+import { UniversityLibrarian, ReferenceItem } from "./classes";
+import dictionary from "./encyclopedia"; // default export class
 
-function GetAllBooks(): Array<IBook> {
+function GetAllBooks(): Array<Interfaces.IBook> {
 
-    let books: Array<IBook> = [
+    let books: Array<Interfaces.IBook> = [
         { id: 1, title: "ulisse", author: "pippo", available: true, category: Category.Biografia },
         { id: 2, title: "Armi", author: "pluto", available: false, category: Category.Storia  },
         { id: 3, title: "Farfalle", author: "paperino", available: true, category: Category.Bambini  },
@@ -14,7 +16,7 @@ function GetAllBooks(): Array<IBook> {
     return books;
 }
 
-function LogFirstAvailable(books:  Array<IBook>): void {
+function LogFirstAvailable(books:  Array<Interfaces.IBook>): void {
     let numberOfBooks: number = books.length;
     let firstAvailable: string = "";
 
@@ -32,7 +34,7 @@ function LogFirstAvailable(books:  Array<IBook>): void {
 function GetBookTitlesByCategory(categoryFilter: Category = Category.Poesia ): Array<string> { // default parameter
     console.log("Getting books in category: ", categoryFilter);
 
-    const allBooks: Array<IBook> = GetAllBooks();
+    const allBooks: Array<Interfaces.IBook> = GetAllBooks();
     const filteredTitles: string[] = [];
     for(let currentBook of allBooks) {
         if(currentBook.category === categoryFilter) {
@@ -43,18 +45,18 @@ function GetBookTitlesByCategory(categoryFilter: Category = Category.Poesia ): A
 }
 
 function LogBookTitles(titles: string[]): void {
-    for(let title of titles){
+    for(let title of titles) {
         console.log(title);
     }
 }
 
-function GetBookId(id: number): IBook {
-    const allBooks: Array<IBook> = GetAllBooks();
+function GetBookId(id: number): Interfaces.IBook {
+    const allBooks: Array<Interfaces.IBook> = GetAllBooks();
     return allBooks.filter(book => book.id === id)[0];
 }
 
 
-const allBooks: Array<IBook> = GetAllBooks();
+const allBooks: Array<Interfaces.IBook> = GetAllBooks();
 LogFirstAvailable(allBooks);
 
 
@@ -76,7 +78,7 @@ console.log(myID);
 
 let x: number;
 x = 5;
-let idGenerator: IStringGenerator; // function type
+let idGenerator: Interfaces.IStringGenerator; // function type
 idGenerator = CreateCustomerID;
 
 myID = idGenerator("Giuseppe", 15);
@@ -109,7 +111,7 @@ function CheckoutBooks(customer: string, ...BookIDs: number[]): string[] { // re
     console.log("Checking out books for " + customer);
     let bookCheckedOut: string[] = [];
     for(let id of BookIDs) {
-        let book: IBook = GetBookId(id);
+        let book: Interfaces.IBook = GetBookId(id);
         if(book && book.available) {
             bookCheckedOut.push(book.title);
         }
@@ -143,7 +145,7 @@ FlyOverTheWater(probablyADuck); // works - duck typing
 
 
 // ********************************************************************* */
-function PrintBook(book: IBook): void {
+function PrintBook(book: Interfaces.IBook): void {
     console.log(book.title +  " by "+ book.author);
 }
 
@@ -159,27 +161,27 @@ let myBook: any = {
 
 PrintBook(myBook); // duck typing
 
-let myBookTyped: IBook = {
+let myBookTyped: Interfaces.IBook = {
     id: 5,
     title: "Giustizia",
     author: "Jane Austen",
     available: true,
     category: Category.Commedia,
     pages: 350,
-    markDamaged: (reason: string) => console.log("Damaged: " + reason);
+    markDamaged: (reason: string) => console.log("Damaged: " + reason)
 };
 
 PrintBook(myBookTyped);
 myBookTyped.markDamaged("torn pages");
 
-let logDamage: IDamageLogger; // function types
+let logDamage: Interfaces.Logger; // function types
 logDamage = (damage: string) => console.log("damage reported: " +damage);
 logDamage("coffee stains");
 
 
 // ********************************************************************* */
 
-let favouriteLibrarian: ILibrarian = new UniversityLibrarian();
+let favouriteLibrarian: Interfaces.ILibrarian = new UniversityLibrarian();
 favouriteLibrarian.name = "Sharon";
 favouriteLibrarian.assistCustomer("Lynda");
 
@@ -191,7 +193,7 @@ favouriteLibrarian.assistCustomer("Lynda");
 // ref.publisher = "Random Data Publishing";
 // console.log(ref.publisher);
 
-let refBook: ReferenceItem = new Encyclopedia("WorldPedia", 1900, 10); // abstract
+let refBook: ReferenceItem = new dictionary("WorldPedia", 1900, 10); // abstract - default class import
 refBook.printItem();
 refBook.printCitation();
 
@@ -210,3 +212,22 @@ myPaper.printCitation();
 
 // let favouriteNovel = new Novel();
 // favouriteNovel.
+
+
+
+// *****************************NAMESPACE**************************************** */
+
+// /// <reference path="utilityFunction.ts" />
+
+// import util = Utility.Fees;
+
+//  let fee: number = util.calculateLateFee(10);
+//  console.log(`Fee: ${fee}`);
+
+
+// *****************************MODULE**************************************** */
+
+import {calculateLateFee as CalcFree, maxBooksAllowed} from "./utilityFunction";
+ let fee: number = CalcFree(10);
+ let max: number = maxBooksAllowed(12);
+ console.log(`Fee: ${fee}`);

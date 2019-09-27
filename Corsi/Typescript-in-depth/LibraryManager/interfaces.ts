@@ -34,4 +34,4 @@ interface ILibrarian extends IPerson {
 }
 
 
-export { IBook, IStringGenerator, IDamageLogger, IAuthor, ILibrarian };
+export { IBook, IStringGenerator, IDamageLogger as Logger, IAuthor, ILibrarian };
