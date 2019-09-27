@@ -5,7 +5,7 @@
   "tasks": [
     {
       "type": "typescript",
-      "tsconfig": "AngularJsTestEnvironment/tsconfig.json",
+      "tsconfig": "Corsi/Typescript-in-depth/LibraryManager/tsconfig.json",
 
       // use the standard tsc problem matcher to find compile problems in the output
       "problemMatcher": ["$tsc"]

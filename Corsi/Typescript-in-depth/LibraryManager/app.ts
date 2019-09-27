@@ -3,6 +3,7 @@ import { Category } from "./enums";
 import * as Interfaces from "./interfaces";
 import { UniversityLibrarian, ReferenceItem } from "./classes";
 import dictionary from "./encyclopedia"; // default export class
+// import * as _ from "lodash"; // type definitions
 
 function GetAllBooks(): Array<Interfaces.IBook> {
   let books: Array<Interfaces.IBook> = [
@@ -319,3 +320,13 @@ magazineShelf.printTitles();
 
 let softwareBook: Interfaces.IBook = bookShelf.find("C programming language");
 console.log(`${softwareBook.title} (${softwareBook.author})`);
+console.log("snakeCaseTitle");
+
+// *****************************TYPE DEFINITIONS**************************************** */
+///// <reference path="./typings/index.d.ts" />
+
+import * as _ from "lodash"; // import with typings npm service
+
+let snakeCaseTitle: string = _.snakeCase("From Whom the Bell Tolls");
+console.log(snakeCaseTitle);
+console.log("snakeCaseTitle");

@@ -7,7 +7,9 @@
     "outDir": "LibraryManager/js",
     "watch": true,
     "noImplicitAny": true,
-    "noImplicitReturns": true
+    "noImplicitReturns": true,
+    "esModuleInterop": true
   },
-  "include": ["LibraryManager/**/*"]
+  "include": ["LibraryManager/**/*"],
+  "files": ["./LibraryManager/app.ts", "./LibraryManager/typings/index.d.ts"]
 }
