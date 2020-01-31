@@ -1,6 +1,7 @@
-import { Component } from '@angular/core'
-import { EventService } from '../shared/event.service'
-import { ActivatedRoute } from '@angular/router'
+import { Component, OnInit } from '@angular/core';
+import { EventService } from '../shared/event.service';
+import { ActivatedRoute } from '@angular/router';
+import { IEvent } from '../shared';
 
 @Component({
   selector: 'event-details',
@@ -10,14 +11,14 @@ import { ActivatedRoute } from '@angular/router'
     .event-image { height: 100px; }
   `]
 })
-export class EventDetailsComponent {
-  event:any
+export class EventDetailsComponent implements OnInit {
+  event: IEvent;
 
-  constructor(private eventService:EventService, private route: ActivatedRoute) {
+  constructor (private eventService: EventService, private route: ActivatedRoute) {
 
   }
   ngOnInit() {
-    this.event = this.eventService.getEvent(+this.route.snapshot.params['id'])
+    this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
   }
 
 }
