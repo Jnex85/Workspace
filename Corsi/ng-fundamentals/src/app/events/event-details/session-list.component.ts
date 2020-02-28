@@ -37,7 +37,7 @@ export class SessionListComponent implements OnChanges {
   }
 
   userHasVoted(session: ISession) {
-    return this.voterService.userHasVoted(session, this.auth.currentUser.userName)
+    return this.voterService.userHasVoted(session, this.auth.currentUser.userName);
   }
 
   filterSessions(filter) {
@@ -46,7 +46,7 @@ export class SessionListComponent implements OnChanges {
     } else {
       this.visibleSessions = this.sessions.filter(session => {
         return session.level.toLocaleLowerCase() === filter;
-      })
+      });
     }
   }
 }

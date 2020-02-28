@@ -1,9 +1,9 @@
-import { Input, Output, Component, EventEmitter } from "@angular/core";
+import { Input, Output, Component, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'upvote',
   styleUrls: ['./upvote.component.css'],
-  template:`
+  template: `
     <div class="votingWidgetContainer pointable" (click)="onClick()">
       <div class="well votingWidget">
         <div class="votingButton">
